@@ -1,0 +1,13 @@
+C:\Users\Erik Lammers\Source\Repos\NeuralNetworks\Audivel\Audivel\bin\Debug\Audivel.exe.config
+C:\Users\Erik Lammers\Source\Repos\NeuralNetworks\Audivel\Audivel\bin\Debug\Audivel.exe
+C:\Users\Erik Lammers\Source\Repos\NeuralNetworks\Audivel\Audivel\bin\Debug\Audivel.pdb
+C:\Users\Erik Lammers\Source\Repos\NeuralNetworks\Audivel\Audivel\obj\Debug\Audivel.csprojResolveAssemblyReference.cache
+C:\Users\Erik Lammers\Source\Repos\NeuralNetworks\Audivel\Audivel\obj\Debug\Audivel.MainWindow.resources
+C:\Users\Erik Lammers\Source\Repos\NeuralNetworks\Audivel\Audivel\obj\Debug\Audivel.Properties.Resources.resources
+C:\Users\Erik Lammers\Source\Repos\NeuralNetworks\Audivel\Audivel\obj\Debug\Audivel.csproj.GenerateResource.Cache
+C:\Users\Erik Lammers\Source\Repos\NeuralNetworks\Audivel\Audivel\obj\Debug\Audivel.exe
+C:\Users\Erik Lammers\Source\Repos\NeuralNetworks\Audivel\Audivel\obj\Debug\Audivel.pdb
+C:\Users\Erik Lammers\Source\Repos\NeuralNetworks\Audivel\Audivel\bin\Debug\Audivel.exe.manifest
+C:\Users\Erik Lammers\Source\Repos\NeuralNetworks\Audivel\Audivel\bin\Debug\Audivel.application
+C:\Users\Erik Lammers\Source\Repos\NeuralNetworks\Audivel\Audivel\obj\Debug\Audivel.exe.manifest
+C:\Users\Erik Lammers\Source\Repos\NeuralNetworks\Audivel\Audivel\obj\Debug\Audivel.application
