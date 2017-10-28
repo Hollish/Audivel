@@ -39,10 +39,13 @@
             this.stopButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.reductionBox = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.reductionTimeBox = new System.Windows.Forms.NumericUpDown();
             this.iAudioSessionControl2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iAudioSessionControl2BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.changeDelayBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reductionBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reductionTimeBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iAudioSessionControl2BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iAudioSessionControl2BindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -97,7 +100,7 @@
             this.changeDelayBox.Size = new System.Drawing.Size(96, 20);
             this.changeDelayBox.TabIndex = 3;
             this.changeDelayBox.Value = new decimal(new int[] {
-            2000,
+            4000,
             0,
             0,
             0});
@@ -113,7 +116,7 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(197, 52);
+            this.startButton.Location = new System.Drawing.Point(197, 74);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(75, 23);
             this.startButton.TabIndex = 5;
@@ -124,7 +127,7 @@
             // stopButton
             // 
             this.stopButton.Enabled = false;
-            this.stopButton.Location = new System.Drawing.Point(197, 81);
+            this.stopButton.Location = new System.Drawing.Point(197, 100);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(75, 23);
             this.stopButton.TabIndex = 6;
@@ -158,6 +161,37 @@
             0,
             0});
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 92);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Reduction Time (ms)";
+            // 
+            // reductionTimeBox
+            // 
+            this.reductionTimeBox.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.reductionTimeBox.Location = new System.Drawing.Point(12, 108);
+            this.reductionTimeBox.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.reductionTimeBox.Name = "reductionTimeBox";
+            this.reductionTimeBox.Size = new System.Drawing.Size(96, 20);
+            this.reductionTimeBox.TabIndex = 12;
+            this.reductionTimeBox.Value = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            // 
             // iAudioSessionControl2BindingSource
             // 
             this.iAudioSessionControl2BindingSource.DataSource = typeof(Audivel.IAudioSessionControl2);
@@ -170,7 +204,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 109);
+            this.ClientSize = new System.Drawing.Size(284, 137);
+            this.Controls.Add(this.reductionTimeBox);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.reductionBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.stopButton);
@@ -184,6 +220,7 @@
             this.Text = "Audivel";
             ((System.ComponentModel.ISupportInitialize)(this.changeDelayBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reductionBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reductionTimeBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iAudioSessionControl2BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iAudioSessionControl2BindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -205,6 +242,8 @@
         private System.Windows.Forms.Button stopButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown reductionBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown reductionTimeBox;
     }
 }
 

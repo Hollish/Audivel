@@ -65,29 +65,27 @@ namespace Audivel
             float highVolumeLevel;
             primaryControl.GetMasterVolume(out highVolumeLevel);
             Console.WriteLine(highVolumeLevel);
+            float lowVolumeLevel = highVolumeLevel * (float)(reductionBox.Value / 100);
+            float volumeStep = (highVolumeLevel - lowVolumeLevel) * (50f/(float)reductionTimeBox.Value);
+            int maxTics = (int)reductionTimeBox.Value / 50;
+            int curTics = 0;
             
-            Console.WriteLine("Doing work.");
             while (queue)
             {
                 TimeSpan span = DateTime.UtcNow - lastKeyTime;
                 deltaMS = (int)span.TotalMilliseconds;
 
-                Console.WriteLine(deltaMS);
-
-                if (deltaMS > changeDelayBox.Value && pressedKeys.Count == 0)
-                {
-                    primaryControl.SetMasterVolume(highVolumeLevel * (float)(reductionBox.Value / 100), ref guid);
-                } else
-                {
-                    primaryControl.SetMasterVolume(highVolumeLevel, ref guid);
+                if (deltaMS > changeDelayBox.Value && pressedKeys.Count == 0) {   
+                    if (curTics < maxTics)
+                        curTics++;
+                } else {
+                    if (curTics > 0)
+                        curTics--;
                 }
 
-                float curVolumeLevel;
-                primaryControl.GetMasterVolume(out curVolumeLevel);
-                Console.WriteLine(curVolumeLevel);
-
+                primaryControl.SetMasterVolume(highVolumeLevel - (volumeStep * curTics), ref guid);
+                Thread.Sleep(50);
             }
-            Console.WriteLine("Not doing work.");
             primaryControl.SetMasterVolume(highVolumeLevel, ref guid);
         }
 
@@ -157,6 +155,7 @@ namespace Audivel
             primarySource.Enabled = false;
             changeDelayBox.Enabled = false;
             reductionBox.Enabled = false;
+            reductionTimeBox.Enabled = false;
 
             if (!audioChannelLeveler.IsBusy)
             {
@@ -173,6 +172,7 @@ namespace Audivel
             primarySource.Enabled = true;
             changeDelayBox.Enabled = true;
             reductionBox.Enabled = true;
+            reductionTimeBox.Enabled = true;
 
             if (audioChannelLeveler.IsBusy)
             {
