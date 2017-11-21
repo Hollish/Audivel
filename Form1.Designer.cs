@@ -156,7 +156,7 @@
             this.reductionBox.Size = new System.Drawing.Size(73, 20);
             this.reductionBox.TabIndex = 10;
             this.reductionBox.Value = new decimal(new int[] {
-            25,
+            15,
             0,
             0,
             0});
@@ -187,7 +187,7 @@
             this.reductionTimeBox.Size = new System.Drawing.Size(96, 20);
             this.reductionTimeBox.TabIndex = 12;
             this.reductionTimeBox.Value = new decimal(new int[] {
-            2000,
+            3000,
             0,
             0,
             0});

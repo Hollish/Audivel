@@ -11,7 +11,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace Audivel
 {
     public partial class MainWindow : Form
@@ -23,8 +22,8 @@ namespace Audivel
         private bool queue = true;
         private int deltaMS;
         private DateTime lastKeyTime = DateTime.UtcNow;
-        private List<int> pressedKeys = new List<int>(); 
-
+        private List<int> pressedKeys = new List<int>();
+        private bool toggleVoluimeChange = false;
 
 
         public MainWindow()
@@ -40,13 +39,19 @@ namespace Audivel
         {
             lastKeyTime = DateTime.UtcNow;
             Debug.WriteLine(lastKeyTime);
-            if (e.KeyboardState == GlobalKeyboardHook.KeyboardState.KeyDown && !pressedKeys.Contains(e.KeyboardData.VirtualCode))
+            if (e.KeyboardState == GlobalKeyboardHook.KeyboardState.KeyDown && e.KeyboardData.VirtualCode == 0x13)
+            {
+                toggleVoluimeChange = !toggleVoluimeChange;
+                Debug.WriteLine("Pause Pressed.");
+            } else if (e.KeyboardState == GlobalKeyboardHook.KeyboardState.KeyDown && !pressedKeys.Contains(e.KeyboardData.VirtualCode))
             {
                 pressedKeys.Add(e.KeyboardData.VirtualCode);
             } else if (e.KeyboardState == GlobalKeyboardHook.KeyboardState.KeyUp)
             {
                 pressedKeys.Remove(e.KeyboardData.VirtualCode);
             }
+            
+            
         }
 
         public void Dispose()
@@ -69,13 +74,17 @@ namespace Audivel
             float volumeStep = (highVolumeLevel - lowVolumeLevel) * (50f/(float)reductionTimeBox.Value);
             int maxTics = (int)reductionTimeBox.Value / 50;
             int curTics = 0;
-            
+
             while (queue)
             {
                 TimeSpan span = DateTime.UtcNow - lastKeyTime;
                 deltaMS = (int)span.TotalMilliseconds;
 
-                if (deltaMS > changeDelayBox.Value && pressedKeys.Count == 0) {   
+                if (toggleVoluimeChange){
+                    if (curTics < maxTics)
+                        curTics++;
+                }
+                else if (deltaMS > changeDelayBox.Value && pressedKeys.Count == 0) {   
                     if (curTics < maxTics)
                         curTics++;
                 } else {
@@ -156,6 +165,7 @@ namespace Audivel
             changeDelayBox.Enabled = false;
             reductionBox.Enabled = false;
             reductionTimeBox.Enabled = false;
+            lastKeyTime = DateTime.UtcNow;
 
             if (!audioChannelLeveler.IsBusy)
             {
